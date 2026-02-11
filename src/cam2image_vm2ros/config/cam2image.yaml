@@ -1,0 +1,13 @@
+cam2image:
+  ros__parameters:
+    width: 240
+    height: 120
+    socket_ip: "145.126.108.244"
+    socket_port: 9999
+    remote_mode: true
+    show_camera: true
+    remote_timeout: 7
+    history: "keep_last"
+    durability: "volatile"
+    reliability: "reliable"
+    depth: 10
