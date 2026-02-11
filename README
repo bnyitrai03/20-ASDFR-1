@@ -1,2 +1,6 @@
+Report:
+https://www.overleaf.com/project/698c707341eb6048a47ea37d
+
+Comands:
 source ~/RobotProgramming/20-ASDFR-1/install/setup.bash
 ros2 run cam2image_vm2ros cam2image −−ros−args −−params−file src/cam2image_vm2ros/config/cam2image.yaml
