@@ -9,8 +9,8 @@ Output:
         Published the images received from the UDP stream created by cam2image_host2vm.
 
 Run:
-        In a terminal run either of the following commands:
-        ros2 run cam2image_vm2ros cam2image --ros-args --params-file src/cam2image_vm2ros/config/cam2image.yaml
+        In a terminal run the following command:
+        ros2 run cam2image_vm2ros cam2image --ros-args --params-file src/cam2image_vm2ros/config/cam2image.yaml -p remote_mode:=true
 
 Parameters:
         double image_stream_FPS : Sets the output rate of image stream. Default = 30 FPS, which is most webcams
