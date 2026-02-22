@@ -1,14 +1,27 @@
-Get the dependencies:
+## Report:
+https://www.overleaf.com/project/698c707341eb6048a47ea37d
+
+## Get the dependencies:
+    ```bash
     rosdep install -i --from-path src --rosdistro jazzy -y
+    ```
 
-Build all of the packages:
+## Build all of the packages:
+    ```bash
     colcon build
+    ```
 
-Build specific packages:
+## Build specific packages:
+    ```bash
     colcon build --packages-select ...
+    ```
 
-Source the setup files (new terminal, ws root):
+## Source the setup files (new terminal, ws root):
+    ```bash
     . install/setup.bash
+    ```
 
-Run the nodes:
+## Run the nodes:
+    ```bash
     ros2 run ...
+    ```

@@ -1,3 +1,14 @@
+////////////////////////////////////////////////////////////////////////////////////
+// Authors:   Bence Nyitrai
+// Group:     2x
+// License:   Apache License
+//
+// Brief:     Node that subscribes to a camera image topic and publishes a boolean
+//            indicating whether the average brightness of the image is above a
+//            configurable threshold. Brightness is determined by converting the
+//            image to grayscale and computing the mean pixel value (0-255).
+///////////////////////////////////////////////////////////////////////////////////
+
 #include <chrono>
 #include <memory>
 #include <string>
@@ -32,7 +43,7 @@ public:
             std::bind(&ImageBrightnessNode::image_callback, this, std::placeholders::_1)
         );
         
-        // Publisher for light state (true = light on, false = light off)
+        // Publisher for brightness state
         light_state_publisher_ = this->create_publisher<std_msgs::msg::Bool>(
             "/light_state", 
             10
@@ -54,7 +65,6 @@ private:
         cv::Mat img = cv_ptr->image;
         cv::Mat gray_image;
         cv::cvtColor(img, gray_image, cv::COLOR_BGR2GRAY);
-        
         double brightness = cv::mean(gray_image)[0];
         bool is_light_on = brightness >= brightness_threshold_;
         
