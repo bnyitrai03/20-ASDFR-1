@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.8)
-project(position_indicator)
+project(image_processing)
 
 if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
   add_compile_options(-Wall -Wextra -Wpedantic)
@@ -12,8 +12,8 @@ find_package(sensor_msgs REQUIRED)
 find_package(cv_bridge REQUIRED)
 find_package(OpenCV REQUIRED)
 
-add_executable(position_indicator_node src/position_indicator_node.cpp)
-ament_target_dependencies(position_indicator_node
+add_executable(image_processing_node src/image_processing_node.cpp)
+ament_target_dependencies(image_processing_node
   rclcpp
   std_msgs
   sensor_msgs
@@ -22,7 +22,7 @@ ament_target_dependencies(position_indicator_node
 )
 
 install(TARGETS
-  position_indicator_node
+  image_processing_node
   DESTINATION lib/${PROJECT_NAME}
 )
 

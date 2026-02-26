@@ -17,11 +17,11 @@
 #include <opencv2/opencv.hpp>
 #include <cv_bridge/cv_bridge.hpp>
 
-class PositionIndicatorNode : public rclcpp::Node
+class ImageProcessingNode : public rclcpp::Node
 {
 public:
-    PositionIndicatorNode()
-        : Node("position_indicator_node")
+    ImageProcessingNode()
+        : Node("image_processing_node")
     {   
         // Brightness threshold parameter
         auto param_desc = rcl_interfaces::msg::ParameterDescriptor{};
@@ -30,7 +30,7 @@ public:
         brightness_threshold_ = this->get_parameter("brightness_threshold").as_double();
         // Runtime brightness threshold change callback
         param_callback_handle_ = this->add_on_set_parameters_callback(
-            std::bind(&PositionIndicatorNode::param_callback, this, std::placeholders::_1)
+            std::bind(&ImageProcessingNode::param_callback, this, std::placeholders::_1)
         );
 
         // Image topic parameter
@@ -43,7 +43,7 @@ public:
         image_subscriber_ = this->create_subscription<sensor_msgs::msg::Image>(
             image_topic_, 
             10, 
-            std::bind(&PositionIndicatorNode::image_callback, this, std::placeholders::_1)
+            std::bind(&ImageProcessingNode::image_callback, this, std::placeholders::_1)
         );
         
         // Publish the object pixel coordinates
@@ -53,7 +53,7 @@ public:
         );
         
         RCLCPP_INFO(this->get_logger(),
-                    "position_indicator_node_node started with"
+                    "image_processing_node_node started with"
                     "topic: %s and brightness threshold: %.2f",
                     image_topic_.c_str(), brightness_threshold_);
     }
@@ -125,7 +125,7 @@ private:
 int main(int argc, char **argv)
 {
     rclcpp::init(argc, argv);
-    rclcpp::spin(std::make_shared<PositionIndicatorNode>());
+    rclcpp::spin(std::make_shared<ImageProcessingNode>());
     rclcpp::shutdown();
     return 0;
 }

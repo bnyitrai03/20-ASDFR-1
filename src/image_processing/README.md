@@ -1,4 +1,4 @@
-# Package position_indicator
+# Package image_processing
 -----------------------------------------------
 ## Description:
     ROS2 node that detects the position of a bright object in an
@@ -29,31 +29,31 @@ image_topic
         Topic to subscribe to for the camera image stream.
 
 ## Get the dependencies:
-    ```bash
+    ```
     rosdep install -i --from-path src --rosdistro jazzy -y
     ```
 
 ## Build:
-    ```bash
-    colcon build --packages-select position_indicator
+    ```
+    colcon build --packages-select image_processing
     ```
 
 ## Source the setup file (new terminal, ws root):
-    ```bash
+    ```
     . install/setup.bash
     ```
 
 ## Run the node:
-    ```bash
-    ros2 run position_indicator position_indicator_node
+    ```
+    ros2 run image_processing image_processing_node
     ```
 
 ## Update params at runtime:
-    ```bash
-    ros2 param set /position_indicator_node brightness_threshold 124.0
+    ```
+    ros2 param set /image_processing_node brightness_threshold 124.0
     ```
 
 ## Monitor output:
-    ```bash
+    ```
     ros2 topic echo /object_coordinate
     ```
