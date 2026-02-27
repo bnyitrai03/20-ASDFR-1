@@ -25,3 +25,9 @@ https://www.overleaf.com/project/698c707341eb6048a47ea37d
     ```bash
     ros2 run ...
     ```
+
+## Use the launch file:
+    ```
+    cd launch
+    ros2 launch relbot_sim_launch.yaml
+    ```

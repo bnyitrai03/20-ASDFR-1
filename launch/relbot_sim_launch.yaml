@@ -1,0 +1,45 @@
+launch:
+  - node:
+      pkg: cam2image_vm2ros
+      exec: cam2image
+      name: cam2image
+      args: --ros-args --params-file $(find-pkg-share cam2image_vm2ros)/config/cam2image.yaml -p remote_mode:=true
+      output: screen
+  
+  - node:
+      pkg: image_processing
+      exec: image_processing_node
+      name: image_processing_node
+      param:
+        - name: brightness_threshold
+          value: 64.0
+        - name: image_topic
+          value: /image
+
+  - node:
+      pkg: path_planning
+      exec: path_planning_node
+      name: path_planning_node
+      output: log
+
+  - node:
+      pkg: relbot_adapter
+      exec: relbot_adapter
+      name: relbot_adapter
+      remap:
+        - from: /output/motor_cmd
+          to: /input/motor_cmd
+      output: log
+
+  - node:
+      pkg: relbot_simulator
+      exec: relbot_simulator
+      name: relbot_simulator
+      output: log
+
+  - node:
+      pkg: turtlesim
+      exec: turtlesim_node
+      name: sim
+      args: --ros-args --log-level info
+      output: log

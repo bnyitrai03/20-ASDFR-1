@@ -29,31 +29,19 @@ image_topic
         Topic to subscribe to for the camera image stream.
 
 ## Get the dependencies:
-    ```
     rosdep install -i --from-path src --rosdistro jazzy -y
-    ```
 
 ## Build:
-    ```
     colcon build --packages-select image_processing
-    ```
 
 ## Source the setup file (new terminal, ws root):
-    ```
     . install/setup.bash
-    ```
 
 ## Run the node:
-    ```
     ros2 run image_processing image_processing_node
-    ```
 
 ## Update params at runtime:
-    ```
     ros2 param set /image_processing_node brightness_threshold 124.0
-    ```
 
 ## Monitor output:
-    ```
     ros2 topic echo /object_coordinate
-    ```
